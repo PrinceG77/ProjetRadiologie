@@ -2,13 +2,14 @@ package com.example.projetradiologie.bean;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 public class Seance {
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Date dateDebit;
-    private Date dateFin;
+    private LocalDateTime dateDebit;
+    private LocalDateTime dateFin;
     @ManyToOne
     private Prescription prescription;
     private Boolean presence;
@@ -21,19 +22,19 @@ public class Seance {
         this.id = id;
     }
 
-    public Date getDateDebit() {
+    public LocalDateTime getDateDebit() {
         return dateDebit;
     }
 
-    public void setDateDebit(Date dateDebit) {
+    public void setDateDebit(LocalDateTime dateDebit) {
         this.dateDebit = dateDebit;
     }
 
-    public Date getDateFin() {
+    public LocalDateTime getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(LocalDateTime dateFin) {
         this.dateFin = dateFin;
     }
 

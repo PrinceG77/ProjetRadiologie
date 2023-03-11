@@ -2,6 +2,7 @@ package com.example.projetradiologie.bean;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -10,7 +11,7 @@ public class HistoriquePresci {
     private Long id;
     @ManyToOne
     private Prescription prescription;
-    private Date dateHistorique;
+    private LocalDateTime dateHistorique;
     @ManyToOne
     private EtatPresci etatPresci;
 
@@ -30,11 +31,11 @@ public class HistoriquePresci {
         this.prescription = prescription;
     }
 
-    public Date getDateHistorique() {
+    public LocalDateTime getDateHistorique() {
         return dateHistorique;
     }
 
-    public void setDateHistorique(Date dateHistorique) {
+    public void setDateHistorique(LocalDateTime dateHistorique) {
         this.dateHistorique = dateHistorique;
     }
 

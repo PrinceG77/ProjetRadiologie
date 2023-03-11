@@ -2,20 +2,24 @@ package com.example.projetradiologie.bean;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Prescription {
-    @Id@GeneratedValue(strategy = GenerationType.AUTO)
-    private  Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private Date datePrescription;
+    private  int nbrTotalScance;
     @ManyToOne
     private Patient patient;
     @ManyToOne
     private Frequence frequence;
-    @ManyToOne
-    private Seance seance;
-    private Date dateDebut;
+    @OneToMany(mappedBy = "prescription")
+    private List<Seance> seances;
+    private LocalDateTime dateDebut;
     @ManyToOne
     private EtatPresci etatPresci;
 
@@ -51,12 +55,12 @@ public class Prescription {
         this.frequence = frequence;
     }
 
-    public Seance getSeance() {
-        return seance;
+    public List<Seance> getSeances() {
+        return seances;
     }
 
-    public void setSeance(Seance seance) {
-        this.seance = seance;
+    public void setSeances(List<Seance> seances) {
+        this.seances = seances;
     }
 
     public Date getDateDebut() {
@@ -73,5 +77,17 @@ public class Prescription {
 
     public void setEtatPresci(EtatPresci etatPresci) {
         this.etatPresci = etatPresci;
+    }
+
+    public int getNbrTotalScance() {
+        return nbrTotalScance;
+    }
+
+    public void setNbrTotalScance(int nbrTotalScance) {
+        this.nbrTotalScance = nbrTotalScance;
+    }
+
+    public void setDateDebut(LocalDateTime dateDebut) {
+        this.dateDebut = dateDebut;
     }
 }

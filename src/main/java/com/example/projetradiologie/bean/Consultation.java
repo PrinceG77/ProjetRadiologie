@@ -2,12 +2,13 @@ package com.example.projetradiologie.bean;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 public class Consultation {
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Date dateConsultation;
+    private LocalDateTime dateConsultation;
     private String libelle;
     @ManyToOne
     private Prescription prescription;
@@ -21,11 +22,11 @@ public class Consultation {
         this.id = id;
     }
 
-    public Date getDateConsultation() {
+    public LocalDateTime getDateConsultation() {
         return dateConsultation;
     }
 
-    public void setDateConsultation(Date dateConsultation) {
+    public void setDateConsultation(LocalDateTime dateConsultation) {
         this.dateConsultation = dateConsultation;
     }
 
