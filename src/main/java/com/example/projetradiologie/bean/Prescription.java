@@ -3,7 +3,6 @@ package com.example.projetradiologie.bean;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,17 +10,21 @@ public class Prescription {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Date datePrescription;
-    private  int nbrTotalScance;
+    private LocalDateTime datePrescription;
+    private  int nbrTotalSeance;
     @ManyToOne
     private Patient patient;
     @ManyToOne
     private Frequence frequence;
     @OneToMany(mappedBy = "prescription")
     private List<Seance> seances;
+
+    @OneToMany(mappedBy = "prescription")
+    private List<Consultation> consultations;
     private LocalDateTime dateDebut;
     @ManyToOne
-    private EtatPresci etatPresci;
+    private EtatPresciption etatPresci;
+
 
     public Long getId() {
         return id;
@@ -31,12 +34,20 @@ public class Prescription {
         this.id = id;
     }
 
-    public Date getDatePrescription() {
+    public LocalDateTime getDatePrescription() {
         return datePrescription;
     }
 
-    public void setDatePrescription(Date datePrescription) {
+    public void setDatePrescription(LocalDateTime datePrescription) {
         this.datePrescription = datePrescription;
+    }
+
+    public int getNbrTotalSeance() {
+        return nbrTotalSeance;
+    }
+
+    public void setNbrTotalSeance(int nbrTotalSeance) {
+        this.nbrTotalSeance = nbrTotalSeance;
     }
 
     public Patient getPatient() {
@@ -63,31 +74,31 @@ public class Prescription {
         this.seances = seances;
     }
 
-    public Date getDateDebut() {
+    public List<Consultation> getConsultations() {
+        return consultations;
+    }
+
+    public void setConsultations(List<Consultation> consultations) {
+        this.consultations = consultations;
+    }
+
+    public LocalDateTime getDateDebut() {
         return dateDebut;
-    }
-
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public EtatPresci getEtatPresci() {
-        return etatPresci;
-    }
-
-    public void setEtatPresci(EtatPresci etatPresci) {
-        this.etatPresci = etatPresci;
-    }
-
-    public int getNbrTotalScance() {
-        return nbrTotalScance;
-    }
-
-    public void setNbrTotalScance(int nbrTotalScance) {
-        this.nbrTotalScance = nbrTotalScance;
     }
 
     public void setDateDebut(LocalDateTime dateDebut) {
         this.dateDebut = dateDebut;
     }
+
+    public EtatPresciption getEtatPresci() {
+        return etatPresci;
+    }
+
+    public void setEtatPresci(EtatPresciption etatPresci) {
+        this.etatPresci = etatPresci;
+    }
+
+
+
+
 }

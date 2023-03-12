@@ -8,7 +8,7 @@ import java.util.Date;
 public class Seance {
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private LocalDateTime dateDebit;
+    private LocalDateTime dateDebut;
     private LocalDateTime dateFin;
     @ManyToOne
     private Prescription prescription;
@@ -22,12 +22,12 @@ public class Seance {
         this.id = id;
     }
 
-    public LocalDateTime getDateDebit() {
-        return dateDebit;
+    public LocalDateTime getDateDebut() {
+        return dateDebut;
     }
 
-    public void setDateDebit(LocalDateTime dateDebit) {
-        this.dateDebit = dateDebit;
+    public void setDateDebut(LocalDateTime dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
     public LocalDateTime getDateFin() {

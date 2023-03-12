@@ -3,17 +3,16 @@ package com.example.projetradiologie.bean;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
-public class HistoriquePresci {
+public class HistoriquePrescription {
     @Id@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     private Prescription prescription;
     private LocalDateTime dateHistorique;
     @ManyToOne
-    private EtatPresci etatPresci;
+    private EtatPresciption etatPrescription;
 
     public Long getId() {
         return id;
@@ -39,11 +38,11 @@ public class HistoriquePresci {
         this.dateHistorique = dateHistorique;
     }
 
-    public EtatPresci getEtatPresci() {
-        return etatPresci;
+    public EtatPresciption getEtatPrescription() {
+        return etatPrescription;
     }
 
-    public void setEtatPresci(EtatPresci etatPresci) {
-        this.etatPresci = etatPresci;
+    public void setEtatPrescription(EtatPresciption etatPrescription) {
+        this.etatPrescription = etatPrescription;
     }
 }
