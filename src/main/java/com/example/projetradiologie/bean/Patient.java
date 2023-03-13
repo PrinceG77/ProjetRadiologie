@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Patient {
-    @Id@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private  Long id;
     private String cin;
     private String nom;

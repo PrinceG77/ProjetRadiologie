@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 public class HistoriquePrescription {
-    @Id@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     private Prescription prescription;

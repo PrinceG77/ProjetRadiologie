@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 public class Seance {
-    @Id@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDateTime dateDebut;
     private LocalDateTime dateFin;
