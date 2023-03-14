@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface FrequenceDao extends JpaRepository<Frequence, Long> {
     Frequence findByCode(String code);
 
+    int deleteByCode(String code);
+
 }

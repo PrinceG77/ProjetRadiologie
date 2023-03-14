@@ -5,9 +5,11 @@ import com.example.projetradiologie.dao.PatientDao;
 import com.example.projetradiologie.service.facade.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PatientServiceImpl implements PatientService {
 
     @Autowired
