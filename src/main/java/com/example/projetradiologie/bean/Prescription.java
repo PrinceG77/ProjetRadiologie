@@ -23,7 +23,7 @@ public class Prescription {
     private List<Consultation> consultations;
     private LocalDateTime dateDebut;
     @ManyToOne
-    private EtatPresciption etatPresci;
+    private EtatPrescription etatPresci;
 
 
     public Long getId() {
@@ -90,11 +90,11 @@ public class Prescription {
         this.dateDebut = dateDebut;
     }
 
-    public EtatPresciption getEtatPresci() {
+    public EtatPrescription getEtatPresci() {
         return etatPresci;
     }
 
-    public void setEtatPresci(EtatPresciption etatPresci) {
+    public void setEtatPresci(EtatPrescription etatPresci) {
         this.etatPresci = etatPresci;
     }
 

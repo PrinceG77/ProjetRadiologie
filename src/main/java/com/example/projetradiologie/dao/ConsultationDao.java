@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ConsultationDao extends JpaRepository<Consultation, Long> {
+
+    Consultation findByLibelle(String Libelle);
+    int deleteByLibelle(String Libelle);
 }

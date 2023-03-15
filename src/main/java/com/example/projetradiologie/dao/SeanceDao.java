@@ -11,5 +11,8 @@ import java.util.List;
 public interface SeanceDao extends JpaRepository <Seance, Long> {
 
     List<Seance> findByPrescriptionPatientCin(String cin);
+    Seance findByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateDebut);
+
+    int deleteByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateTime);
 
 }

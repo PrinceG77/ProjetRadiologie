@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Repository
 public interface HistoriquePrescriptionDao extends JpaRepository<HistoriquePrescription, Long> {
 
-    HistoriquePrescription findByPrescriptionPatientCin(String cin);
+    HistoriquePrescription findByEtatPrescriptionCode(Long code);
 
-    int deleteByPrescriptionPatientCin(String cin);
+    int deleteByByEtatPrescriptionCode(Long code);;
 }
