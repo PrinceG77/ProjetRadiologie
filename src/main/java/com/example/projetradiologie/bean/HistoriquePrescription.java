@@ -12,7 +12,7 @@ public class HistoriquePrescription {
     private Prescription prescription;
     private LocalDateTime dateHistorique;
     @ManyToOne
-    private EtatPresciption etatPrescription;
+    private EtatPrescription etatPrescription;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class HistoriquePrescription {
         this.dateHistorique = dateHistorique;
     }
 
-    public EtatPresciption getEtatPrescription() {
+    public EtatPrescription getEtatPrescription() {
         return etatPrescription;
     }
 
-    public void setEtatPrescription(EtatPresciption etatPrescription) {
+    public void setEtatPrescription(EtatPrescription etatPrescription) {
         this.etatPrescription = etatPrescription;
     }
 }

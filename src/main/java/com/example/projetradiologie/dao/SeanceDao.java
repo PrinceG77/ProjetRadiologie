@@ -10,8 +10,9 @@ import java.util.List;
 @Repository
 public interface SeanceDao extends JpaRepository <Seance, Long> {
 
-    Seance findByPrescriptionDatePrescription(LocalDateTime datePrescription);
-
     List<Seance> findByPrescriptionPatientCin(String cin);
+    Seance findByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateDebut);
+
+    int deleteByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateTime);
 
 }
