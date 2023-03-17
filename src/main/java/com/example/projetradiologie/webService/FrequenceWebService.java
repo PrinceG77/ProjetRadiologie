@@ -16,7 +16,7 @@ public class FrequenceWebService {
     }
     @DeleteMapping("/code/{code}")
     @Transactional
-    public int deleteByCode(String code) {
+    public int deleteByCode(@PathVariable String code) {
         return frequenceService.deleteByCode(code);
     }
 

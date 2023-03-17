@@ -19,7 +19,7 @@ public class PatientWebService {
 
     @DeleteMapping("/cin/{cin}")
     @Transactional
-    public int deleteByCin(String cin) {
+    public int deleteByCin(@PathVariable String cin) {
         return patientService.deleteByCin(cin);
     }
 

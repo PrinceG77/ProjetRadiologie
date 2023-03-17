@@ -18,7 +18,7 @@ public class HistoriquePrescriptionWebService {
     }
     @DeleteMapping("/code/{code}")
     @Transactional
-    public int deleteByByEtatPrescriptionCode(Long code) {
+    public int deleteByByEtatPrescriptionCode(@PathVariable Long code) {
         return historiquePrescriptionService.deleteByByEtatPrescriptionCode(code);
     }
     @GetMapping("/")

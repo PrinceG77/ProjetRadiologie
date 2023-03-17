@@ -23,7 +23,7 @@ public class SeanceWebService {
     }
 
     @DeleteMapping("/cin/{cin}")
-    public int deleteByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateTime) {
+    public int deleteByPrescriptionPatientCinAndDateDebut(@PathVariable String cin, LocalDateTime dateTime) {
         return seanceService.deleteByPrescriptionPatientCinAndDateDebut(cin, dateTime);
     }
 
@@ -38,7 +38,7 @@ public class SeanceWebService {
     }
 
     @DeleteMapping("/aLong/{aLong}")
-    public void deleteById(Long aLong) {
+    public void deleteById(@PathVariable Long aLong) {
         seanceService.deleteById(aLong);
     }
 

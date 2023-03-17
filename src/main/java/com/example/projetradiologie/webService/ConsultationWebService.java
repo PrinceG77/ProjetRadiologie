@@ -18,7 +18,7 @@ public class ConsultationWebService {
 
     @DeleteMapping("/libelle/{libelle}")
     @Transactional
-    public int deleteByLibelle(String Libelle) {
+    public int deleteByLibelle(@PathVariable String Libelle) {
         return consultationService.deleteByLibelle(Libelle);
     }
     @GetMapping("/")
