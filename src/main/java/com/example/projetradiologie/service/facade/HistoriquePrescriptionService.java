@@ -11,13 +11,12 @@ import java.util.List;
 @Service
 public interface HistoriquePrescriptionService {
 
-    public HistoriquePrescription findByEtatPrescriptionCode(Long code);
-
+    HistoriquePrescription findByPrescriptionRef(String ref);
     @Transactional
-    public int deleteByByEtatPrescriptionCode(Long code);
+    int deleteByPrescriptionRef(String ref);
 
     public List<HistoriquePrescription> findAll();
 
-    public  int save(HistoriquePrescription historiquePrescription);
+    public int save(HistoriquePrescription historiquePrescription) ;
 
 }

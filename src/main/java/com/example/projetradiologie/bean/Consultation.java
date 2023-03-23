@@ -10,6 +10,7 @@ public class Consultation {
     private Long id;
     private LocalDateTime dateConsultation;
     private String libelle;
+
     @ManyToOne
     private Prescription prescription;
     private String descriptif;

@@ -11,16 +11,16 @@ import java.util.List;
 @Service
 public interface SeanceService {
 
-    public List<Seance> findByPrescriptionPatientCin(String cin);
+    public Seance findByRef(String ref);
 
-    public Seance findByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateDebut) ;
+    public List<Seance> findByPrescriptionRef(String ref) ;
 
-    public int deleteByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateTime);
+    public int DeleteByPrescriptionRef(String ref) ;
 
     public List<Seance> findAll();
 
     public int save(Seance seance);
 
-    public void deleteById(Long aLong);
+
 
 }

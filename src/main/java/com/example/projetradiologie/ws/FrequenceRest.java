@@ -1,4 +1,4 @@
-package com.example.projetradiologie.webService;
+package com.example.projetradiologie.ws;
 
 import com.example.projetradiologie.bean.Frequence;
 import com.example.projetradiologie.service.facade.FrequenceService;
@@ -8,16 +8,26 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/api/F1/frequence")
-public class FrequenceWebService {
+public class FrequenceRest {
 
     @GetMapping("/code/{code}")
     public Frequence findByCode(@PathVariable String code) {
         return frequenceService.findByCode(code);
     }
     @DeleteMapping("/code/{code}")
-    @Transactional
+
     public int deleteByCode(@PathVariable String code) {
         return frequenceService.deleteByCode(code);
+    }
+
+    @GetMapping("/ref/{ref}")
+    public Frequence findByPrescriptionRef(String ref) {
+        return frequenceService.findByPrescriptionRef(ref);
+    }
+
+    @DeleteMapping("/ref/{ref}")
+    public int deleteByPrescriptionRef(String ref) {
+        return frequenceService.deleteByPrescriptionRef(ref);
     }
 
     @PostMapping("/")

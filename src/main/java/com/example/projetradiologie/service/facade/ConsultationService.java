@@ -12,8 +12,12 @@ public interface ConsultationService {
 
     public Consultation findByLibelle(String Libelle);
 
-    @Transactional
+
     public int deleteByLibelle(String Libelle);
+
+    List<Consultation> findByPrescriptionRef(String ref);
+
+    int deleteByPrescriptionRef(String ref);
 
     public List<Consultation> findAll() ;
 

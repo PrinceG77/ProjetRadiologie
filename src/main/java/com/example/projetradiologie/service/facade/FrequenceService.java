@@ -10,8 +10,10 @@ import java.util.List;
 public interface FrequenceService {
 
     public Frequence findByCode(String code);
-    @Transactional
+    Frequence findByPrescriptionRef(String ref);
+
     public int deleteByCode(String code);
+    int deleteByPrescriptionRef(String ref);
 
     public int save(Frequence frequence);
 }

@@ -1,4 +1,4 @@
-package com.example.projetradiologie.webService;
+package com.example.projetradiologie.ws;
 
 import com.example.projetradiologie.bean.HistoriquePrescription;
 import com.example.projetradiologie.service.facade.HistoriquePrescriptionService;
@@ -10,17 +10,18 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("/api/H1/historiquePrescription")
-public class HistoriquePrescriptionWebService {
+public class HistoriquePrescriptionRest {
 
-    @GetMapping("/code/{code}")
-    public HistoriquePrescription findByEtatPrescriptionCode(@PathVariable Long code) {
-        return historiquePrescriptionService.findByEtatPrescriptionCode(code);
+    @GetMapping("ref/{ref}")
+    public HistoriquePrescription findByPrescriptionRef(String ref) {
+        return historiquePrescriptionService.findByPrescriptionRef(ref);
     }
-    @DeleteMapping("/code/{code}")
-    @Transactional
-    public int deleteByByEtatPrescriptionCode(@PathVariable Long code) {
-        return historiquePrescriptionService.deleteByByEtatPrescriptionCode(code);
+
+    @DeleteMapping("ref/{ref}")
+    public int deleteByPrescriptionRef(String ref) {
+        return historiquePrescriptionService.deleteByPrescriptionRef(ref);
     }
+
     @GetMapping("/")
     public List<HistoriquePrescription> findAll() {
         return historiquePrescriptionService.findAll();

@@ -12,6 +12,7 @@ public class Prescription {
     private Long id;
     private LocalDateTime datePrescription;
     private  int nbrTotalSeance;
+    private  String ref ;
     @ManyToOne
     private Patient patient;
     @ManyToOne
@@ -98,7 +99,11 @@ public class Prescription {
         this.etatPresci = etatPresci;
     }
 
+    public String getRef() {
+        return ref;
+    }
 
-
-
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
 }

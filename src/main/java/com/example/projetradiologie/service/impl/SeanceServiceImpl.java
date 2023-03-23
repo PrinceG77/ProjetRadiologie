@@ -1,8 +1,11 @@
 package com.example.projetradiologie.service.impl;
 
+import com.example.projetradiologie.bean.Prescription;
 import com.example.projetradiologie.bean.Seance;
 import com.example.projetradiologie.dao.SeanceDao;
+import com.example.projetradiologie.service.facade.PrescriptionService;
 import com.example.projetradiologie.service.facade.SeanceService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +16,20 @@ import java.util.List;
 public class SeanceServiceImpl implements SeanceService {
     @Autowired
    private SeanceDao seanceDao;
+    @Autowired
+    private PrescriptionService prescriptionService;
 
-    public List<Seance> findByPrescriptionPatientCin(String cin) {
-        return seanceDao.findByPrescriptionPatientCin(cin);
+    public Seance findByRef(String ref) {
+        return seanceDao.findByRef(ref);
     }
 
-    public Seance findByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateDebut) {
-        return seanceDao.findByPrescriptionPatientCinAndDateDebut(cin, dateDebut);
+    public List<Seance> findByPrescriptionRef(String ref) {
+        return seanceDao.findByPrescriptionRef(ref);
     }
 
-    public int deleteByPrescriptionPatientCinAndDateDebut(String cin, LocalDateTime dateTime) {
-        return seanceDao.deleteByPrescriptionPatientCinAndDateDebut(cin, dateTime);
+    @Transactional
+    public int DeleteByPrescriptionRef(String ref) {
+        return seanceDao.DeleteByPrescriptionRef(ref);
     }
 
     public List<Seance> findAll() {
@@ -32,15 +38,22 @@ public class SeanceServiceImpl implements SeanceService {
 
     public int save(Seance seance) {
 
-        if(seanceDao.findById(seance.getId()) != null)
+        if(findByRef(seance.getRef())!=null)
         {
             return -1;
         }
+        Prescription prescription = prescriptionService.findByRef(seance.getPrescription().getRef());
+        seance.setPrescription(prescription);
+
+        if(prescription == null)
+        {
+            return -2;
+        }
+
+        prescriptionService.update(prescription);
         seanceDao.save(seance);
         return 1;
     }
 
-    public void deleteById(Long aLong) {
-        seanceDao.deleteById(aLong);
-    }
+
 }

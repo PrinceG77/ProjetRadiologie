@@ -1,4 +1,4 @@
-package com.example.projetradiologie.webService;
+package com.example.projetradiologie.ws;
 
 
 import com.example.projetradiologie.bean.Patient;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("/api/P1/patient")
-public class PatientWebService {
+public class PatientRest {
     @GetMapping("/cin/{cin}")
     public Patient findByCin(@PathVariable String cin) {
         return patientService.findByCin(cin);

@@ -9,5 +9,8 @@ public interface PrescriptionDao extends JpaRepository<Prescription, Long> {
 
     Prescription findByPatientCin(String cin);
 
+    Prescription findByRef(String ref);
+
+    int deleteByRef(String ref);
     int deleteByPatientCin(String cin);
 }

@@ -1,6 +1,7 @@
 package com.example.projetradiologie.service.facade;
 
 import com.example.projetradiologie.bean.Prescription;
+import com.example.projetradiologie.bean.Seance;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -13,5 +14,9 @@ public interface PrescriptionService {
 
     public List<Prescription> findAll();
 
-    public int save(Prescription prescription);
+    public int save(Prescription prescription, List<Seance> seances);
+
+    Prescription findByRef(String ref);
+    public int deleteByRef(String ref);
+    public void update(Prescription prescription);
 }

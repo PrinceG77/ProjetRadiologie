@@ -13,6 +13,15 @@ public class Seance {
     @ManyToOne
     private Prescription prescription;
     private Boolean presence;
+    private String ref;
+
+    public String getRef() {
+        return ref;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
 
     public Long getId() {
         return id;

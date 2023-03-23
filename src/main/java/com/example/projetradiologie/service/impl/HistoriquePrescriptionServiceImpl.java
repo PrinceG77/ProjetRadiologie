@@ -6,6 +6,7 @@ import com.example.projetradiologie.dao.ConsultationDao;
 import com.example.projetradiologie.dao.HistoriquePrescriptionDao;
 import com.example.projetradiologie.service.facade.ConsultationService;
 import com.example.projetradiologie.service.facade.HistoriquePrescriptionService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,24 +17,26 @@ public class HistoriquePrescriptionServiceImpl implements HistoriquePrescription
     @Autowired
     private HistoriquePrescriptionDao historiquePrescriptionDao;
 
-    public HistoriquePrescription findByEtatPrescriptionCode(Long code) {
-        return historiquePrescriptionDao.findByEtatPrescriptionCode(code);
+    @Override
+    public HistoriquePrescription findByPrescriptionRef(String ref) {
+        return historiquePrescriptionDao.findByPrescriptionRef(ref);
     }
 
-    public int deleteByByEtatPrescriptionCode(Long code) {
-        return historiquePrescriptionDao.deleteByByEtatPrescriptionCode(code);
+    @Override
+    public int deleteByPrescriptionRef(String ref) {
+        return historiquePrescriptionDao.deleteByPrescriptionRef(ref);
     }
 
+    @Override
     public List<HistoriquePrescription> findAll() {
         return historiquePrescriptionDao.findAll();
     }
 
-    public  int save(HistoriquePrescription historiquePrescription) {
-        if(historiquePrescriptionDao.findByEtatPrescriptionCode(historiquePrescription.getEtatPrescription().getCode()) != null)
+    public int save(HistoriquePrescription historiquePrescription) {
+        if(historiquePrescriptionDao.findById(historiquePrescription.getId()) != null)
         {
             return -1;
         }
-
         historiquePrescriptionDao.save(historiquePrescription);
         return 1;
     }

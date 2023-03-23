@@ -1,4 +1,4 @@
-package com.example.projetradiologie.webService;
+package com.example.projetradiologie.ws;
 
 import com.example.projetradiologie.bean.Consultation;
 import com.example.projetradiologie.service.facade.ConsultationService;
@@ -10,17 +10,27 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("/api/C1/consultation")
-public class ConsultationWebService {
+public class ConsultationRest {
     @GetMapping("/libelle/{libelle}")
     public Consultation findByLibelle(@PathVariable String Libelle) {
         return consultationService.findByLibelle(Libelle);
     }
 
     @DeleteMapping("/libelle/{libelle}")
-    @Transactional
     public int deleteByLibelle(@PathVariable String Libelle) {
         return consultationService.deleteByLibelle(Libelle);
     }
+
+    @GetMapping("/")
+    public List<Consultation> findByPrescriptionRef(String ref) {
+        return consultationService.findByPrescriptionRef(ref);
+    }
+
+    @DeleteMapping("/ref/{ref}")
+    public int deleteByPrescriptionRef(String ref) {
+        return consultationService.deleteByPrescriptionRef(ref);
+    }
+
     @GetMapping("/")
     public List<Consultation> findAll() {
         return consultationService.findAll();
