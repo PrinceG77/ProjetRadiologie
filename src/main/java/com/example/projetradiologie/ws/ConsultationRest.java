@@ -21,7 +21,7 @@ public class ConsultationRest {
         return consultationService.deleteByLibelle(Libelle);
     }
 
-    @GetMapping("/")
+    @GetMapping("/ref/{ref}")
     public List<Consultation> findByPrescriptionRef(String ref) {
         return consultationService.findByPrescriptionRef(ref);
     }

@@ -11,11 +11,11 @@ import java.util.List;
 @Service
 public interface SeanceService {
 
-    public Seance findByRef(String ref);
+    public Seance findByReference(String reference);
 
     public List<Seance> findByPrescriptionRef(String ref) ;
 
-    public int DeleteByPrescriptionRef(String ref) ;
+    public int deleteByPrescriptionRef(String ref);
 
     public List<Seance> findAll();
 

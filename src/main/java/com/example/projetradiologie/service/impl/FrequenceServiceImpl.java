@@ -13,27 +13,21 @@ public class FrequenceServiceImpl implements FrequenceService {
     @Autowired
     FrequenceDao frequenceDao;
 
-    public Frequence findByCode(String code) {
-        return frequenceDao.findByCode(code);
+    public Frequence findByLibelle(String Libelle) {
+        return frequenceDao.findByLibelle(Libelle);
     }
 
     @Transactional
-    public int deleteByCode(String code) {
-        return frequenceDao.deleteByCode(code);
-    }
-
-    @Override
-    public Frequence findByPrescriptionRef(String ref) {
-        return frequenceDao.findByPrescriptionRef(ref);
-    }
-
-    @Transactional
-    @Override
-    public int deleteByPrescriptionRef(String ref) {
-        return frequenceDao.deleteByPrescriptionRef(ref);
+    public int deleteByLibelle(String Libelle) {
+        return frequenceDao.deleteByLibelle(Libelle);
     }
 
     public int save(Frequence frequence) {
+
+        if(findByLibelle(frequence.getLibelle()) != null)
+        {
+            return -1;
+        }
 
         frequenceDao.save(frequence);
         return 1;

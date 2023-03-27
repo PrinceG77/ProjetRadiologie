@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface SeanceDao extends JpaRepository <Seance, Long> {
 
-    Seance findByRef(String ref);
+    Seance findByReference(String reference);
     List<Seance> findByPrescriptionRef(String ref);
-    int DeleteByPrescriptionRef(String ref);
+    int deleteByPrescriptionRef(String ref);
 
 }

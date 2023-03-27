@@ -14,22 +14,15 @@ public class EtatPrescriptionServiceImpl implements EtatPrescriptionService {
     @Autowired
     private EtatPrescriptionDao etatPrescriptionDao;
 
-    public EtatPrescription findByCode(Long Code) {
-        return etatPrescriptionDao.findByCode(Code);
+
+    @Override
+    public EtatPrescription findByLibelle(String libelle) {
+        return etatPrescriptionDao.findByLibelle(libelle);
     }
 
-    @Transactional
-    public int deleteByCode(Long code) {
-        return etatPrescriptionDao.deleteByCode(code);
-    }
-
-    public EtatPrescription findByPrescriptionRef(String ref) {
-        return etatPrescriptionDao.findByPrescriptionRef(ref);
-    }
-
-    @Transactional
-    public int deleteByPrescriptionRef(String ref) {
-        return etatPrescriptionDao.deleteByPrescriptionRef(ref);
+    @Override
+    public int deleteByLibelle(String libelle) {
+        return etatPrescriptionDao.deleteByLibelle(libelle);
     }
 
     @Transactional
@@ -38,7 +31,7 @@ public class EtatPrescriptionServiceImpl implements EtatPrescriptionService {
     }
 
     public  int save(EtatPrescription etatPrescription) {
-        if(etatPrescriptionDao.findByCode(etatPrescription.getCode()) != null)
+        if(etatPrescriptionDao.findByLibelle(etatPrescription.getLibelle()) != null)
         {
             return -1;
         }

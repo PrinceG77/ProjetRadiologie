@@ -9,11 +9,10 @@ import java.util.List;
 @Service
 public interface FrequenceService {
 
-    public Frequence findByCode(String code);
-    Frequence findByPrescriptionRef(String ref);
 
-    public int deleteByCode(String code);
-    int deleteByPrescriptionRef(String ref);
+    public Frequence findByLibelle(String Libelle);
+
+    public int deleteByLibelle(String Libelle);
 
     public int save(Frequence frequence);
 }

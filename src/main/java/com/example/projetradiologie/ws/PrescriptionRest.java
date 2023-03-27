@@ -16,7 +16,7 @@ public class PrescriptionRest {
 
 
     @PostMapping("/")
-    public int save(Prescription prescription, List<Seance> seances) {
+    public Prescription save(@RequestBody Prescription prescription, @RequestBody List<Seance> seances) {
         return prescriptionService.save(prescription, seances);
     }
 

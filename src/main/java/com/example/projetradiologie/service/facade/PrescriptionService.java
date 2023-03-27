@@ -14,7 +14,7 @@ public interface PrescriptionService {
 
     public List<Prescription> findAll();
 
-    public int save(Prescription prescription, List<Seance> seances);
+    public Prescription save(Prescription prescription, List<Seance> seances);
 
     Prescription findByRef(String ref);
     public int deleteByRef(String ref);

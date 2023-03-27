@@ -18,8 +18,7 @@ public class CorsConfig {
                         .allowedHeaders("*")
                         .allowedOrigins("http://localhost:4200");
             }
-        };
-    }
-
+   };
+}
 
 }

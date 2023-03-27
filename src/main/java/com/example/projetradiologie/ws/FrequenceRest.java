@@ -10,24 +10,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/F1/frequence")
 public class FrequenceRest {
 
-    @GetMapping("/code/{code}")
-    public Frequence findByCode(@PathVariable String code) {
-        return frequenceService.findByCode(code);
-    }
-    @DeleteMapping("/code/{code}")
 
-    public int deleteByCode(@PathVariable String code) {
-        return frequenceService.deleteByCode(code);
+    @GetMapping("/libelle/{libelle}")
+    public Frequence findByLibelle(String Libelle) {
+        return frequenceService.findByLibelle(Libelle);
     }
-
-    @GetMapping("/ref/{ref}")
-    public Frequence findByPrescriptionRef(String ref) {
-        return frequenceService.findByPrescriptionRef(ref);
-    }
-
-    @DeleteMapping("/ref/{ref}")
-    public int deleteByPrescriptionRef(String ref) {
-        return frequenceService.deleteByPrescriptionRef(ref);
+    @DeleteMapping("/libelle/{libelle}")
+    public int deleteByLibelle(String Libelle) {
+        return frequenceService.deleteByLibelle(Libelle);
     }
 
     @PostMapping("/")

@@ -19,8 +19,8 @@ public class SeanceServiceImpl implements SeanceService {
     @Autowired
     private PrescriptionService prescriptionService;
 
-    public Seance findByRef(String ref) {
-        return seanceDao.findByRef(ref);
+    public Seance findByReference(String reference) {
+        return seanceDao.findByReference(reference);
     }
 
     public List<Seance> findByPrescriptionRef(String ref) {
@@ -28,8 +28,8 @@ public class SeanceServiceImpl implements SeanceService {
     }
 
     @Transactional
-    public int DeleteByPrescriptionRef(String ref) {
-        return seanceDao.DeleteByPrescriptionRef(ref);
+    public int deleteByPrescriptionRef(String ref) {
+        return seanceDao.deleteByPrescriptionRef(ref);
     }
 
     public List<Seance> findAll() {
@@ -38,7 +38,7 @@ public class SeanceServiceImpl implements SeanceService {
 
     public int save(Seance seance) {
 
-        if(findByRef(seance.getRef())!=null)
+        if(findByReference(seance.getReference())!=null)
         {
             return -1;
         }

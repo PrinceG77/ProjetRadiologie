@@ -2,6 +2,7 @@ package com.example.projetradiologie.ws;
 
 import com.example.projetradiologie.bean.EtatPrescription;
 import com.example.projetradiologie.service.facade.EtatPrescriptionService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,24 +18,14 @@ public class EtatPrescriptionRest {
     @Autowired
     private EtatPrescriptionService etatPrescriptionService;
 
-    @GetMapping("/code/{code}")
-    public EtatPrescription findByCode(Long Code) {
-        return etatPrescriptionService.findByCode(Code);
+
+    public EtatPrescription findByLibelle(String libelle) {
+        return etatPrescriptionService.findByLibelle(libelle);
     }
 
-    @GetMapping("/ref/{ref}")
-    public EtatPrescription findByPrescriptionRef(String ref) {
-        return etatPrescriptionService.findByPrescriptionRef(ref);
-    }
-
-    @DeleteMapping("/code/{code}")
-    public int deleteByCode(Long code) {
-        return etatPrescriptionService.deleteByCode(code);
-    }
-
-    @DeleteMapping("/ref/{ref}")
-    public int deleteByPrescriptionRef(String ref) {
-        return etatPrescriptionService.deleteByPrescriptionRef(ref);
+    @Transactional
+    public int deleteByLibelle(String libelle) {
+        return etatPrescriptionService.deleteByLibelle(libelle);
     }
 
     public List<EtatPrescription> findAll() {

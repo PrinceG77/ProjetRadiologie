@@ -13,6 +13,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.time.Period;
+import java.time.temporal.ChronoField;
 import java.util.List;
 
 @Service
@@ -39,7 +40,7 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Transactional
     public int deleteByRef(String ref) {
-        int resultSeance = seanceService.DeleteByPrescriptionRef(ref);
+        int resultSeance = seanceService.deleteByPrescriptionRef(ref);
         int resultPrescription = prescriptionDao.deleteByRef(ref);
 
         return resultPrescription + resultSeance;
@@ -62,26 +63,37 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
 
 
-    public int save(Prescription prescription, List<Seance> seances) {
+    public Prescription save(Prescription prescription, List<Seance> seances) {
 
-
-
-        //prescription.getNbrTotalSeance(), prescription.getDateDebut()
+ Prescription res = null;
         if(findByRef(prescription.getRef()) != null)
         {
-            return -1;
+            return res;
         }
+        res = prescriptionDao.save(prescription);
         for(int i=1; i < prescription.getNbrTotalSeance() ; i++)
         {
             Seance seance = new Seance();
             seance.setDateDebut(prescription.getDateDebut().plusWeeks(i));
-            seances.add(seance);
+
+            if(seance.getDateDebut().get(ChronoField.DAY_OF_WEEK) == 6 )
+            {
+                       seance.setDateDebut(seance.getDateDebut().plusDays(2));
+            }
+
+            else if(seance.getDateDebut().get(ChronoField.DAY_OF_WEEK) == 7 )
+
+            {
+                seance.setDateDebut(seance.getDateDebut().plusDays(1));
+            }
+             seance.setPrescription(prescription);
+            seanceService.save(seance);
         }
 
-        prescription.setSeances(seances);
-        prescriptionDao.save(prescription);
 
-            return 1;
+
+
+            return res;
 
 
     }

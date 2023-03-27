@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EtatPrescriptionDao extends JpaRepository<EtatPrescription, Long> {
-    EtatPrescription findByCode(Long Code);
-    EtatPrescription findByPrescriptionRef(String ref);
-    int deleteByCode(Long code);
-    int deleteByPrescriptionRef(String ref);
+
+   EtatPrescription findByLibelle(String libelle);
+
+   int deleteByLibelle(String libelle);
 }

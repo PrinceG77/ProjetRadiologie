@@ -13,9 +13,9 @@ import java.util.List;
 public class SeanceRest {
 
 
-    @GetMapping("/ref/{ref}")
-    public Seance findByRef(@PathVariable String ref) {
-        return seanceService.findByRef(ref);
+    @GetMapping("/reference/{reference}")
+    public Seance findByRef(@PathVariable String reference) {
+        return seanceService.findByReference(reference);
     }
 
     @GetMapping("/ref/{ref}")
@@ -25,7 +25,7 @@ public class SeanceRest {
 
     @DeleteMapping("/ref/{ref}")
     public int DeleteByPrescriptionRef(@PathVariable String ref) {
-        return seanceService.DeleteByPrescriptionRef(ref);
+        return seanceService.deleteByPrescriptionRef(ref);
     }
 
     @GetMapping("/")

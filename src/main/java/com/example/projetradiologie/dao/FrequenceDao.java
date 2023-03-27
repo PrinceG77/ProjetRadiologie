@@ -6,10 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FrequenceDao extends JpaRepository<Frequence, Long> {
-    Frequence findByCode(String code);
-    Frequence findByPrescriptionRef(String ref);
 
-    int deleteByCode(String code);
-    int deleteByPrescriptionRef(String ref);
+    Frequence findByLibelle(String Libelle);
+
+    int deleteByLibelle(String Libelle);
 
 }
