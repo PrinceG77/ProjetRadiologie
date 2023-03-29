@@ -46,15 +46,7 @@ public class ConsultationServiceImpl implements ConsultationService {
         {
             return -1;
         }
-        Prescription prescription = prescriptionService.findByRef(consultation.getPrescription().getRef());
-        consultation.setPrescription(prescription);
 
-        if(prescription == null)
-        {
-            return -2;
-        }
-
-        prescriptionService.update(prescription);
         consultationDao.save(consultation);
         return 1;
     }

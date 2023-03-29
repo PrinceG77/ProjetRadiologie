@@ -11,13 +11,14 @@ import java.util.List;
 
 
 @RestController()
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RequestMapping("/api/PR/prescription")
 public class PrescriptionRest {
 
 
     @PostMapping("/")
-    public Prescription save(@RequestBody Prescription prescription, @RequestBody List<Seance> seances) {
-        return prescriptionService.save(prescription, seances);
+    public Prescription save(@RequestBody Prescription prescription) {
+        return prescriptionService.save(prescription);
     }
 
     @GetMapping("/ref/{ref}")

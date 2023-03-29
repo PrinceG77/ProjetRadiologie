@@ -16,8 +16,7 @@ import java.util.List;
 public class SeanceServiceImpl implements SeanceService {
     @Autowired
    private SeanceDao seanceDao;
-    @Autowired
-    private PrescriptionService prescriptionService;
+
 
     public Seance findByReference(String reference) {
         return seanceDao.findByReference(reference);
@@ -38,19 +37,8 @@ public class SeanceServiceImpl implements SeanceService {
 
     public int save(Seance seance) {
 
-        if(findByReference(seance.getReference())!=null)
-        {
-            return -1;
-        }
-        Prescription prescription = prescriptionService.findByRef(seance.getPrescription().getRef());
-        seance.setPrescription(prescription);
 
-        if(prescription == null)
-        {
-            return -2;
-        }
 
-        prescriptionService.update(prescription);
         seanceDao.save(seance);
         return 1;
     }
