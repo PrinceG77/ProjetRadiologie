@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController()
-@RequestMapping("/api/S1/seance")
+@RequestMapping("/api/PR/seance")
 public class SeanceRest {
 
 

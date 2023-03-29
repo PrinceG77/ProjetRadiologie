@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
-@RequestMapping("/api/F1/frequence")
+@RequestMapping("/api/PR/frequence")
 public class FrequenceRest {
 
 

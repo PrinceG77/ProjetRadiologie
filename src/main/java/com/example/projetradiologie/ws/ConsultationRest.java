@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController()
-@RequestMapping("/api/C1/consultation")
+@RequestMapping("/api/PR/consultation")
 public class ConsultationRest {
     @GetMapping("/libelle/{libelle}")
     public Consultation findByLibelle(@PathVariable String Libelle) {
