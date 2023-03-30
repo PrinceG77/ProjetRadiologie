@@ -3,6 +3,7 @@ package com.example.projetradiologie.bean;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,17 +15,17 @@ public class Prescription {
     private  int nbrTotalSeance;
     private  String ref ;
     @ManyToOne
-    private Patient patient;
+    private Patient patient ;
     @ManyToOne
-    private Frequence frequence;
+    private Frequence frequence ;
     @OneToMany(mappedBy = "prescription")
-    private List<Seance> seances;
+    private List<Seance> seances = new ArrayList<Seance>();
 
     @OneToMany(mappedBy = "prescription")
     private List<Consultation> consultations;
     private LocalDateTime dateDebut;
     @ManyToOne
-    private EtatPrescription etatPresci;
+    private EtatPrescription etatPresci ;
 
 
     public Long getId() {

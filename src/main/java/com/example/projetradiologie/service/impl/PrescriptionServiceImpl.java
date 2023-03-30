@@ -21,6 +21,7 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
     @Autowired
     private PrescriptionDao prescriptionDao;
+    @Autowired
     private SeanceService seanceService;
 
     public void update(Prescription prescription)
@@ -63,15 +64,15 @@ public class PrescriptionServiceImpl implements PrescriptionService {
 
 
 
-    public Prescription save(Prescription prescription, List<Seance> seances) {
+    public Prescription save(Prescription prescription) {
 
- Prescription res = null;
-        if(findByRef(prescription.getRef()) != null)
+        Prescription res = null;
+        if(prescriptionDao.findByRef(prescription.getRef()) != null)
         {
             return res;
         }
         res = prescriptionDao.save(prescription);
-        for(int i=1; i < prescription.getNbrTotalSeance() ; i++)
+        for(int i=1; i <= prescription.getNbrTotalSeance() ; i++)
         {
             Seance seance = new Seance();
             seance.setDateDebut(prescription.getDateDebut().plusWeeks(i));
