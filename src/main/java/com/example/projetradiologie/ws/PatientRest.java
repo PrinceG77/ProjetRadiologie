@@ -29,7 +29,7 @@ public class PatientRest {
     }
 
     @PostMapping("/")
-    public int save(@RequestBody Patient patient) {
+    public Patient save(@RequestBody Patient patient) {
         return patientService.save(patient);
     }
 

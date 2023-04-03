@@ -31,14 +31,18 @@ public class PatientServiceImpl implements PatientService {
         return patientDao.findAll();
     }
 
-    public int save(Patient patient) {
+    public Patient save(Patient patient) {
+
+        Patient res;
         if(patientDao.findByCin(patient.getCin()) != null)
         {
-            return -1;
+            res = null;
+            return res;
         }
         else {
-            patientDao.save(patient);
-            return 1;
+            res = patientDao.save(patient);
+            return res;
+
         }
 
     }

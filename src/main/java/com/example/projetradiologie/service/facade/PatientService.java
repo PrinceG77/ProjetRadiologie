@@ -14,7 +14,7 @@ public interface PatientService{
 
     public List<Patient> findAll();
 
-    public int save(Patient patient);
+    public Patient save(Patient patient);
 
 
 }
