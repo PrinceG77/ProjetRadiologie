@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController()
-@CrossOrigin(origins = {"http://localhost:4200"})
-@RequestMapping("/api/H1/historiquePrescription")
+@RequestMapping("/api/PR/historiquePrescription")
 public class HistoriquePrescriptionRest {
 
-    @GetMapping("/ref/{ref}")
+    @GetMapping("ref/{ref}")
     public HistoriquePrescription findByPrescriptionRef(String ref) {
         return historiquePrescriptionService.findByPrescriptionRef(ref);
     }
 
-    @DeleteMapping("/ref/{ref}")
+    @DeleteMapping("ref/{ref}")
     public int deleteByPrescriptionRef(String ref) {
         return historiquePrescriptionService.deleteByPrescriptionRef(ref);
     }
