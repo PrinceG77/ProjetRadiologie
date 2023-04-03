@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SeanceServiceImpl implements SeanceService {
@@ -22,13 +23,27 @@ public class SeanceServiceImpl implements SeanceService {
         return seanceDao.findByReference(reference);
     }
 
+
     public List<Seance> findByPrescriptionRef(String ref) {
         return seanceDao.findByPrescriptionRef(ref);
+    }
+
+    @Override
+    public List<Seance> findByPrescriptionId(Long id) {
+        return seanceDao.findByPrescriptionId(id);
     }
 
     @Transactional
     public int deleteByPrescriptionRef(String ref) {
         return seanceDao.deleteByPrescriptionRef(ref);
+    }
+
+    public Optional<Seance> findById(Long id) {
+        return seanceDao.findById(id);
+    }
+
+    public void deleteById(Long id) {
+        seanceDao.deleteById(id);
     }
 
     public List<Seance> findAll() {

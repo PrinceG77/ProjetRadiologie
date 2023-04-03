@@ -1,5 +1,6 @@
 package com.example.projetradiologie.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ public class Seance {
     private Long id;
     private LocalDateTime dateDebut;
     private LocalDateTime dateFin;
+    @JsonIgnore
     @ManyToOne
     private Prescription prescription;
     private Boolean presence;

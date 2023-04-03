@@ -1,5 +1,7 @@
 package com.example.projetradiologie.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -7,23 +9,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Prescription {
+public class Prescription  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDateTime datePrescription;
     private  int nbrTotalSeance;
     private  String ref ;
+    @JsonIgnore
     @ManyToOne
     private Patient patient ;
+    @JsonIgnore
     @ManyToOne
     private Frequence frequence ;
+    @JsonIgnore
     @OneToMany(mappedBy = "prescription")
     private List<Seance> seances = new ArrayList<Seance>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "prescription")
     private List<Consultation> consultations;
     private LocalDateTime dateDebut;
+    @JsonIgnore
     @ManyToOne
     private EtatPrescription etatPresci ;
 

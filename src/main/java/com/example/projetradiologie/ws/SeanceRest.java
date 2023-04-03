@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -19,12 +20,19 @@ public class SeanceRest {
         return seanceService.findByReference(reference);
     }
 
-    @GetMapping("/ref/{ref}")
-    public List<Seance> findByPrescriptionRef(@PathVariable String ref) {
-        return seanceService.findByPrescriptionRef(ref);
+    @GetMapping("/prescription/id/{id}")
+    public List<Seance> findByPrescriptionId(Long id) {
+        return seanceService.findByPrescriptionId(id);
     }
 
-    @DeleteMapping("/ref/{ref}")
+    @GetMapping("/prescription/ref/{ref}")
+    public List<Seance> findByPrescriptionRef(@PathVariable String ref) {
+        return seanceService.findByPrescriptionRef(ref);
+
+
+    }
+
+    @DeleteMapping("/prescription/ref/{ref}")
     public int DeleteByPrescriptionRef(@PathVariable String ref) {
         return seanceService.deleteByPrescriptionRef(ref);
     }
@@ -39,7 +47,15 @@ public class SeanceRest {
         return seanceService.save(seance);
     }
 
+    @GetMapping("/id/{id}")
+    public Optional<Seance> findById(@PathVariable Long id) {
+        return seanceService.findById(id);
+    }
 
+    @DeleteMapping("/id/{id}")
+    public void deleteById(@PathVariable Long id) {
+        seanceService.deleteById(id);
+    }
 
     @Autowired
     private SeanceService seanceService;

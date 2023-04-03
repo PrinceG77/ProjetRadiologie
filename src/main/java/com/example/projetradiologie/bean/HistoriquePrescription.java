@@ -1,5 +1,6 @@
 package com.example.projetradiologie.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -8,9 +9,11 @@ import java.time.LocalDateTime;
 public class HistoriquePrescription {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @JsonIgnore
     @ManyToOne
     private Prescription prescription;
     private LocalDateTime dateHistorique;
+    @JsonIgnore
     @ManyToOne
     private EtatPrescription etatPrescription;
 

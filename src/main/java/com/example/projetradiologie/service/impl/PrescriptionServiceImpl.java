@@ -4,7 +4,7 @@ import com.example.projetradiologie.bean.Patient;
 import com.example.projetradiologie.bean.Prescription;
 import com.example.projetradiologie.bean.Seance;
 import com.example.projetradiologie.dao.PrescriptionDao;
-import com.example.projetradiologie.dao.SeanceDao;
+
 import com.example.projetradiologie.service.facade.PrescriptionService;
 import com.example.projetradiologie.service.facade.SeanceService;
 import jakarta.transaction.Transactional;
@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Period;
 import java.time.temporal.ChronoField;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,14 +30,9 @@ public class PrescriptionServiceImpl implements PrescriptionService {
         prescriptionDao.save(prescription);
     }
 
+    @Override
     public Prescription findByRef(String ref) {
-
-        Prescription prescription = prescriptionDao.findByRef(ref);
-        List<Seance> seances = seanceService.findByPrescriptionRef(ref);
-
-        prescription.setSeances(seances);
-
-        return prescription;
+        return prescriptionDao.findByRef(ref);
     }
 
     @Transactional
@@ -88,7 +84,8 @@ public class PrescriptionServiceImpl implements PrescriptionService {
                 seance.setDateDebut(seance.getDateDebut().plusDays(1));
             }
              seance.setPrescription(prescription);
-            seanceService.save(seance);
+            //seance.setReference(prescription.getRef());
+             seanceService.save(seance);
         }
 
 
