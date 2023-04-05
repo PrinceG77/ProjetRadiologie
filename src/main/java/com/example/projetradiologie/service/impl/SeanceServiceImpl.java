@@ -8,6 +8,7 @@ import com.example.projetradiologie.service.facade.SeanceService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,6 +37,11 @@ public class SeanceServiceImpl implements SeanceService {
     @Transactional
     public int deleteByPrescriptionRef(String ref) {
         return seanceDao.deleteByPrescriptionRef(ref);
+    }
+
+    public Seance update(Seance seance)
+    {
+        return seanceDao.save(seance);
     }
 
     public Optional<Seance> findById(Long id) {

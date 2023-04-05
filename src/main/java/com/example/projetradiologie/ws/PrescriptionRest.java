@@ -32,8 +32,8 @@ public class PrescriptionRest {
     }
 
     @PutMapping("/")
-    public void update(@RequestBody Prescription prescription) {
-        prescriptionService.update(prescription);
+    public Prescription update(@RequestBody Prescription prescription) {
+        return prescriptionService.update(prescription);
     }
 
     @GetMapping("/cin/{cin}")

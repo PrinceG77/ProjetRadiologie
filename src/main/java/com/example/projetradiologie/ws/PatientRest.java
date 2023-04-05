@@ -33,6 +33,11 @@ public class PatientRest {
         return patientService.save(patient);
     }
 
+    @PutMapping("/")
+    public Patient update(@RequestBody Patient patient) {
+        return patientService.update(patient);
+    }
+
     @Autowired
     private PatientService patientService;
 }

@@ -18,5 +18,5 @@ public interface PrescriptionService {
 
     Prescription findByRef(String ref);
     public int deleteByRef(String ref);
-    public void update(Prescription prescription);
+    public Prescription update(Prescription prescription);
 }

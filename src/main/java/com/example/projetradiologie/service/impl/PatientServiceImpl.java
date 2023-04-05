@@ -1,6 +1,7 @@
 package com.example.projetradiologie.service.impl;
 
 import com.example.projetradiologie.bean.Patient;
+import com.example.projetradiologie.bean.Prescription;
 import com.example.projetradiologie.dao.PatientDao;
 import com.example.projetradiologie.service.facade.PatientService;
 import jakarta.transaction.Transactional;
@@ -29,6 +30,11 @@ public class PatientServiceImpl implements PatientService {
 
     public  List<Patient> findAll() {
         return patientDao.findAll();
+    }
+
+    public Patient update(Patient patient)
+    {
+        return patientDao.save(patient);
     }
 
     public Patient save(Patient patient) {

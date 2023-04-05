@@ -56,6 +56,11 @@ public class SeanceRest {
         seanceService.deleteById(id);
     }
 
+    @PutMapping("/")
+    public Seance update(@RequestBody Seance seance) {
+        return seanceService.update(seance);
+    }
+
     @Autowired
     private SeanceService seanceService;
 }

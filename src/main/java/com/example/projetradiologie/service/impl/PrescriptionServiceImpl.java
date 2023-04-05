@@ -25,9 +25,9 @@ public class PrescriptionServiceImpl implements PrescriptionService {
     @Autowired
     private SeanceService seanceService;
 
-    public void update(Prescription prescription)
+    public Prescription update(Prescription prescription)
     {
-        prescriptionDao.save(prescription);
+        return prescriptionDao.save(prescription);
     }
 
     @Override

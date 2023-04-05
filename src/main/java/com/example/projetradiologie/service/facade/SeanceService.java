@@ -30,6 +30,8 @@ public interface SeanceService {
 
     public void deleteById(Long id);
 
+    public Seance update(Seance seance);
+
 
 
 }

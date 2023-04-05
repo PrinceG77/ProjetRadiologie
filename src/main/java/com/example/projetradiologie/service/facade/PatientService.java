@@ -9,12 +9,13 @@ import java.util.List;
 @Service
 public interface PatientService{
     Patient findByCin(String cin);
-    @Transactional
+
     int deleteByCin(String cin);
 
     public List<Patient> findAll();
 
     public Patient save(Patient patient);
+    public Patient update(Patient patient);
 
 
 }
