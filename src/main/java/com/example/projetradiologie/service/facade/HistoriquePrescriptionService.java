@@ -11,12 +11,14 @@ import java.util.List;
 @Service
 public interface HistoriquePrescriptionService {
 
-    HistoriquePrescription findByPrescriptionRef(String ref);
-    @Transactional
+    public List<HistoriquePrescription> findByPrescriptionRef(String ref);
+
     int deleteByPrescriptionRef(String ref);
 
     public List<HistoriquePrescription> findAll();
 
     public int save(HistoriquePrescription historiquePrescription) ;
+
+    public HistoriquePrescription update(HistoriquePrescription historiquePrescription);
 
 }

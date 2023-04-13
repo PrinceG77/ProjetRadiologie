@@ -2,6 +2,7 @@ package com.example.projetradiologie.service.impl;
 
 import com.example.projetradiologie.bean.Consultation;
 import com.example.projetradiologie.bean.HistoriquePrescription;
+import com.example.projetradiologie.bean.Seance;
 import com.example.projetradiologie.dao.ConsultationDao;
 import com.example.projetradiologie.dao.HistoriquePrescriptionDao;
 import com.example.projetradiologie.service.facade.ConsultationService;
@@ -18,11 +19,12 @@ public class HistoriquePrescriptionServiceImpl implements HistoriquePrescription
     private HistoriquePrescriptionDao historiquePrescriptionDao;
 
     @Override
-    public HistoriquePrescription findByPrescriptionRef(String ref) {
+    public List<HistoriquePrescription> findByPrescriptionRef(String ref) {
         return historiquePrescriptionDao.findByPrescriptionRef(ref);
     }
 
     @Override
+    @Transactional
     public int deleteByPrescriptionRef(String ref) {
         return historiquePrescriptionDao.deleteByPrescriptionRef(ref);
     }
@@ -32,11 +34,12 @@ public class HistoriquePrescriptionServiceImpl implements HistoriquePrescription
         return historiquePrescriptionDao.findAll();
     }
 
+    public HistoriquePrescription update(HistoriquePrescription historiquePrescription)
+    {
+        return historiquePrescriptionDao.save(historiquePrescription);
+    }
     public int save(HistoriquePrescription historiquePrescription) {
-        if(historiquePrescriptionDao.findById(historiquePrescription.getId()) != null)
-        {
-            return -1;
-        }
+
         historiquePrescriptionDao.save(historiquePrescription);
         return 1;
     }

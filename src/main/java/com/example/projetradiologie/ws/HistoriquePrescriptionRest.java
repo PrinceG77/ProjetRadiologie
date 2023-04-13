@@ -12,13 +12,13 @@ import java.util.List;
 @RequestMapping("/api/PR/historiquePrescription")
 public class HistoriquePrescriptionRest {
 
-    @GetMapping("ref/{ref}")
-    public HistoriquePrescription findByPrescriptionRef(String ref) {
+    @GetMapping("/prescription/ref/{ref}")
+    public List<HistoriquePrescription> findByPrescriptionRef(@PathVariable String ref) {
         return historiquePrescriptionService.findByPrescriptionRef(ref);
     }
 
-    @DeleteMapping("ref/{ref}")
-    public int deleteByPrescriptionRef(String ref) {
+    @DeleteMapping("/prescription/ref/{ref}")
+    public int deleteByPrescriptionRef(@PathVariable String ref) {
         return historiquePrescriptionService.deleteByPrescriptionRef(ref);
     }
 
@@ -29,6 +29,11 @@ public class HistoriquePrescriptionRest {
     @PostMapping("/")
     public int save(@RequestBody HistoriquePrescription historiquePrescription) {
         return historiquePrescriptionService.save(historiquePrescription);
+    }
+
+    @PutMapping("/")
+    public HistoriquePrescription update(HistoriquePrescription historiquePrescription) {
+        return historiquePrescriptionService.update(historiquePrescription);
     }
 
     @Autowired

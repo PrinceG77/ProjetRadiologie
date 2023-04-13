@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface HistoriquePrescriptionDao extends JpaRepository<HistoriquePrescription, Long> {
 
-   HistoriquePrescription findByPrescriptionRef(String ref);
+   List<HistoriquePrescription> findByPrescriptionRef(String ref);
    int deleteByPrescriptionRef(String ref);
 }
